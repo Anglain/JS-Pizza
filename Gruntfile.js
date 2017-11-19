@@ -1,19 +1,19 @@
 /**
  * Created by Andriy on 10.03.2015.
  */
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     //Налаштування збірки Grunt
     var config = {
         //Інформацію про проект з файлу package.json
         pkg: grunt.file.readJSON('package.json'),
 
         //Конфігурація для модуля browserify (перетворює require(..) в код
-        browserify:     {
+        browserify: {
             //Загальні налаштування (grunt-browserify)
-            options:      {
+            options: {
 
                 //brfs замість fs.readFileSync вставляє вміст файлу
-                transform:  [ require('brfs') ],
+                transform: [require('brfs')],
                 browserifyOptions: {
                     //Папка з корнем джерельних кодів javascript
                     basedir: "Frontend/src/js/"
@@ -22,8 +22,8 @@ module.exports = function(grunt) {
 
             //Збірка з назвою піца
             pizza: {
-                src:        'Frontend/src/main.js',
-                dest:       'Frontend/www/assets/js/main.js'
+                src: 'Frontend/src/main.js',
+                dest: 'Frontend/www/assets/js/main.js'
             }
         }
     };

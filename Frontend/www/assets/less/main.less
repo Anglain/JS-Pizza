@@ -1,3 +1,37 @@
 @mainColor: blue;
+@mainColor: #ea862e;
+@rightPanelWidth: 330px;
+@rightPanelColor: #f5f5f5;
+@siteIconWidth: 100px;
+@topPanelHeight: 90px;
+@rightBottomPanelHeight: 100px;
 
 @import "pizza/pizza-card";
+@import "panels/right-column";
+@import "panels/discount-panel";
+@import "panels/top-panel";
+@import "panels/menu";
+@import "pizza/pizza-cart-item";
+
+.main-pizza {
+  display: inline-block;
+  width: 100%;
+
+  background-color: lighten(rgba(255, 240, 0, 0.27), 35%);
+}
+
+.btn-warning {
+  background-color: @mainColor;
+  border-color: @mainColor;
+}
+
+.btn-warning:hover {
+  background-color: lighten(@mainColor, 5%);
+  border-color: lighten(@mainColor, 5%);
+}
+
+.btn-warning:active:hover {
+  background-color: darken(@mainColor, 5%);
+  border-color: darken(@mainColor, 5%);
+}
+

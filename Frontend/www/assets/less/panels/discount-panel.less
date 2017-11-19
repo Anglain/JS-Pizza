@@ -1,0 +1,43 @@
+.discount-panel {
+  position: fixed;
+  width: @siteIconWidth;
+
+  bottom: 0;
+  left: 9px;
+
+  background: #ea862e;
+  color: white;
+  border: 1px solid;
+  border-color: darken(#ea862e, 10%);
+
+  z-index: 99;
+
+  padding: 10px;
+
+  font: bold 20px "Calibri";
+  text-align: center;
+}
+
+.discount-panel .discount-text {
+  border-bottom: dotted 2px darken(@mainColor, 10%);
+  padding-bottom: 4px;
+}
+
+.discount-panel .discount-number {
+  padding-top: 8px;
+
+  font-size: 18px;
+}
+
+.discount-corners {
+  width: @siteIconWidth;
+  height: 11px;
+  top: -11px;
+  left: -1px;
+  background-image: url(../images/discount.svg);
+  background-size: 100px 11px;
+  background-repeat: no-repeat;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: absolute;
+}

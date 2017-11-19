@@ -15,53 +15,137 @@
 
 </head>
 <body>
-<div id="cart"></div>
-<div class="container">
-    <div class="row" id="pizza_list">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_1.jpg">
+<div class="discount-panel">
+    <div class="discount-corners" img="assets/images/discount.svg">
+    </div>
+    <div class="discount-text text-uppercase">
+        Цього тижня<br> на все
+    </div>
+    <div class="discount-number">
+        -20%
+    </div>
+</div>
 
-                <div class="caption"><h3>Thumbnail label</h3>
 
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                    <p>
-                        <a href="#" class="btn btn-primary">Button 2</a>
-                        <a href="#" class="btn btn-default">Button 1</a>
-                    </p>
-                </div>
+<div class="navbar navbar-fixed-top top-panel">
+    <div class="site-icon">
+        <div class="discount-corners top-discount">
+        </div>
+        <div class="pizza-logo">
+            <div class="title-1 text-uppercase" id="pizza-title" >
+                Pizza
+            </div>
+            <div class="title-2 text-uppercase">
+                KMA
             </div>
         </div>
-
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_2.jpg">
-
-                <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                    <p>
-                        <a href="#" class="btn btn-primary">Button 3</a>
-                        <a href="#" class="btn btn-default">Button 4</a>
-                    </p>
-                </div>
+    </div>
+    <div class="header-top-row">
+        <div class="main-header-top-items">
+            <div class="phone-number visible-xs-inline-block visible-sm-inline-block visible-lg-inline-block visible-md-inline-block">
+                (044) 222 5 222
+            </div>
+            <div class="work-time visible-lg-inline-block visible-md-inline-block">
+                24 години / 7 днів на тиждень
+            </div>
+            <div class="delivery visible-lg-inline-block">
+                Безкоштовна доставка піци
+            </div>
+            <div type="button" class="header-top-button btn btn-warning sign-in-button">
+                Ввійти
             </div>
         </div>
+    </div>
 
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_3.jpg">
+    <div class="header-bottom-row">
+        <span class=" pizza-page">
+            Піца
+        </span>
 
-                <div class="caption"><h3>Thumbnail label</h3>
+    </div>
 
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
 
-                    <p>
-                        <a href="#" class="btn btn-primary">Button 5</a>
-                        <a href="#" class="btn btn-default">Button 6</a>
-                    </p>
+
+<div class="main-pizza container-fluid">
+    <div class="row">
+    <div class="menu">
+            <div class="pizza-counter">
+                <h2>
+                    <span class="pizza-counter-text">Усі піци</span>
+                    <span class="pizza-counter-number badge">0</span>
+                </h2>
+            </div>
+            <div class="pizza-filters">
+                <ul class="nav nav-pills all-pizza-filters">
+                    <li role="presentation" class="active pizza-filter-button" id="filter-all">
+                        <a href="#">
+                            Усі
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button"  id="filter-meat">
+                        <a href="#" >
+                            Мясні
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="filter-pineapples">
+                        <a href="#">
+                            З ананасами
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="filter-mushrooms">
+                        <a href="#">
+                            З грибами
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="filter-ocean">
+                        <a href="#">
+                            З морепродуктами
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="filter-vega">
+                        <a href="#">
+                            Вега
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row" id="pizza_list">
+            </div>
+
+        </div>
+
+
+        <div class="right-panel">
+            <div class="right-panel-top">
+                <span class="order-text">
+                    Замовлення
+                    <span class="badge orange order-counter">0</span>
+                </span>
+
+                <span class="clear-order-wrap clear-order">
+                    Очистити замовлення
+                </span>
+
+            </div>
+
+            <div id="cart" class="all-orders" >
+                <div class="no-order" style="display: none;">Пусто в холодильнику? <div>Замовте піцу!</div></div>
+            </div>
+
+            <div class="order-state right-panel-bottom">
+                <span class="sum-title" style="display: none;">
+                    Сума замовлення
+                </span>
+                <span class="sum-number" style="display: none;">
+                    0
+                </span>
+                <div class="do-order-button">
+
+                    <button type="button" class="btn btn-warning btn-lg btn-block button-order" disabled="disabled">
+                        Замовити
+                    </button>
                 </div>
             </div>
         </div>
@@ -75,6 +159,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <!--Own JavaScript -->
-<!--<script type="text/javascript"  src="assets/js/main.js"> </script>-->
+<script type="text/javascript"  src="assets/js/main.js"> </script>
 </body>
 </html>

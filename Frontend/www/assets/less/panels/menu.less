@@ -1,0 +1,50 @@
+.menu {
+  width: 100%;
+  max-width: 1350px;
+
+  margin: auto;
+
+  padding-top: @topPanelHeight;
+  padding-left: 30px;
+  padding-right: @rightPanelWidth + 30px;
+
+  position: relative;
+}
+
+/*
+========================
+|      TOP             |
+========================
+*/
+.menu .pizza-counter {
+  align-items: center;
+  text-align: center;
+}
+
+.menu .pizza-counter .pizza-counter-number {
+  background-color: @mainColor;
+}
+
+.pizza-filters {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.all-pizza-filters {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.pizza-filter-button {
+  font: 14px "Arial";
+  color: @mainColor;
+}
+
+.pizza-filters a{
+  color: @mainColor;
+  border-radius: 4px;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+  background-color: @mainColor;
+}

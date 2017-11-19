@@ -1,0 +1,95 @@
+.top-panel {
+  padding-right: 15px;
+  padding-left: @siteIconWidth + 30px;
+  display: inline;
+  height: @topPanelHeight;
+
+  background: rgba(0, 0, 0, 0.8);
+  color: darken(@rightPanelColor, 30%);
+  margin-right: @rightPanelWidth;
+}
+
+/*
+============================
+|     TOP ROW ELEMENTS     |
+============================
+*/
+.top-panel .header-top-row {
+  box-sizing: border-box;
+  height: @topPanelHeight / 2;
+
+  border-bottom: solid 1px darken(@rightPanelColor, 30%);
+}
+.top-panel .header-top-row .phone-number {
+  font: 22px "Calibri";
+  padding: 6px;
+  display: inline;
+}
+
+.top-panel .header-top-row .work-time {
+  display: inline;
+  padding: 12px;
+  font: 12px "Calibri";
+}
+
+.top-panel .header-top-row .delivery {
+  display: inline;
+  padding: 8px;
+  font: 18px "Calibri";
+}
+
+.top-panel .header-top-row .header-top-button {
+  float: right;
+  margin: 6px;
+}
+
+/*
+=============================
+|   BOTTOM ROW ELEMENTS     |
+=============================
+*/
+.top-panel .header-bottom-row {
+  height: @topPanelHeight / 2;
+  padding: 8px;
+
+  font: 18px "Calibri";
+  color: white;
+}
+
+/*
+============================
+|     PIZZA KMA BADGE      |
+============================
+*/
+.top-panel .site-icon {
+  position: fixed;
+  top: 0;
+
+  background-color: @mainColor;
+  color: white;
+
+  z-index: 99;
+  width: @siteIconWidth;
+  height: 90px;
+  font: 24px "Calibri";
+  text-align: center;
+
+  padding: 22px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+
+  display: inline;
+
+  left: 9px;
+  border-left: 1px solid #d16200;
+  border-right: 1px solid #d16200;
+}
+
+.top-panel .site-icon .title-2 {
+  font: 28px "Calibri";
+}
+
+.top-discount {
+  transform: scaleY(-1);
+  top: 90px;
+}

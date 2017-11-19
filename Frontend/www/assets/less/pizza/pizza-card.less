@@ -1,10 +1,145 @@
+@pizzaImageWidth: 300px;
+
 .pizza-card {
-  img {
-    max-width: 250px;
+
+  position: relative;
+
+  .thumbnail {
+    display: block;
+    height: 100%;
+
+    padding: 4px;
+    margin-bottom: 20px;
+
+    background-color: white;
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
   }
 
   h3 {
     color: @mainColor;
-    background-color: lighten(@mainColor, 45%);
+  }
+
+  /*
+  ===========================
+  |      PIZZA IMAGE        |
+  ===========================
+  */
+  img {
+    vertical-align: middle;
+    border: 0;
+    max-width: 100%;
+    width: @pizzaImageWidth;
+  }
+
+  .thumbnail>img {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    height: auto;
+  }
+
+  /*
+  ================================
+  |  `NEW` AND `POPULAR` LABELS  |
+  ================================
+*/
+  .thumbnail .label {
+    position: absolute;
+    height: 30px;
+
+    padding-top: 2px;
+    padding-right: 7px;
+    padding-left: 7px;
+    padding-bottom: 5px;
+
+    display: inline;
+
+    top: -5px;
+    right: 0;
+
+    text-align: center;
+    font: bold 20px "Calibri";
+  }
+
+  .thumbnail .label-danger {
+    width: 65px;
+  }
+
+  .thumbnail .label-success {
+    width: 110px;
+  }
+
+  /*
+  ===========================
+  |      DESCRIPTION        |
+  ===========================
+  */
+  .caption .title {
+    font: bold 30px "Calibri";
+    color: @mainColor;
+  }
+
+  .caption .type {
+    font: 14px "Calibri";
+    color: darken(@rightPanelColor, 30%);
+  }
+
+  .caption .description {
+    height: 70px;
+    max-height: 70px;
+
+    font: 14px "Helvetica";
+    line-height: 140%;
+    color: darken(@rightPanelColor, 75%);
+  }
+
+  /*
+  ===========================
+  |      BUY BUTTONS        |
+  ===========================
+  */
+
+  .buy-stats {
+    height: 160px;
+  }
+
+  .buy-stats .diameter-image {
+    width: 13px;
+    height: 13px;
+  }
+
+  .buy-stats .weight-image {
+    width: 12px;
+    height: 12px;
+  }
+
+  .buy-stats .weight {
+    padding-bottom: 10px;
+  }
+
+  .buy-stats .price {
+    height: 34px;
+    font-size: 32px;
+  }
+
+  .buy-stats .money {
+    padding-top: 2px;
+    padding-bottom: 10px;
+  }
+
+  .buy-stats .buy-big-stats {
+    padding-right: 4px;
+    padding-left: 4px;
+    text-align: center;
+  }
+
+  .buy-stats .buy-small-stats {
+    padding-right: 4px;
+    padding-left: 4px;
+    text-align: center;
   }
 }

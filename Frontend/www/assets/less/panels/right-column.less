@@ -1,0 +1,144 @@
+.right-panel {
+  width: @rightPanelWidth;
+  height: 100%;
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  flex-direction: column;
+
+  background-color: @rightPanelColor;
+  padding-top: @topPanelHeight - 15px;
+  padding-bottom: @rightBottomPanelHeight + 15px;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.right-panel .right-panel-top .right-panel-bottom .all-orders{
+  width: 100%;
+  box-sizing: content-box;
+}
+
+/*
+========================
+|      TOP             |
+========================
+*/
+.right-panel .right-panel-top {
+  position: fixed;
+
+  width: @rightPanelWidth;
+
+  top: 0;
+  height: @topPanelHeight;
+
+  text-align: center;
+
+  float: right;
+  padding-top: 26px;
+  padding-bottom: 35px;
+  padding-right: 0;
+
+  background-color: white;
+}
+
+.right-panel-top .order-text {
+  padding-left: 15px;
+  font: 24px "Calibri";
+  float: left;
+  font-weight: 700;
+}
+
+.right-panel-top .order-counter {
+  background-color: @mainColor;
+}
+
+.right-panel-top .clear-order {
+  float: right;
+  display: inline;
+
+  cursor: pointer;
+
+  padding-top: 10px;
+  padding-left: 0;
+  padding-right: 15px;
+
+  text-align: center;
+  color: darken(@rightPanelColor, 50%);
+  font: 12px "Calibri";
+}
+
+/*
+========================
+|      MIDDLE          |
+========================
+*/
+.right-panel .all-orders {
+  height: 100%;
+  margin-top: 15px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.all-orders .no-order {
+  padding-top: 80px;
+  padding-right: auto;
+  padding-left: auto;
+  text-align: center;
+  font: 18px "Calibri";
+}
+
+/*
+========================
+|      BOTTOM          |
+========================
+*/
+.right-panel .right-panel-bottom {
+  position: fixed;
+  height: @rightBottomPanelHeight + auto;
+  width: @rightPanelWidth;
+
+  bottom: 0;
+  border-top: 1px solid darken(@rightPanelColor, 5%);
+
+  padding: 10px;
+  box-sizing: content-box;
+
+  text-align: center;
+  background-color: white;
+}
+
+.right-panel-bottom .do-order-button {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  padding-right: 40px;
+}
+
+.right-panel .right-panel-bottom .sum-title {
+  box-sizing: border-box;
+
+  float: left;
+
+  margin-bottom: 15px;
+
+  text-align: left;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.right-panel .right-panel-bottom .sum-number {
+  box-sizing: border-box;
+
+  float: right;
+
+  padding-right: 20px;
+  margin-bottom: 15px;
+
+  text-align: right;
+  font-weight: 700;
+  font-size: 20px;
+}
+
