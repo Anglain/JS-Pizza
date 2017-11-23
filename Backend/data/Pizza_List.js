@@ -10,7 +10,7 @@ var pizza_info = [
         type: 'М’ясна піца',
         content: {
             meat: ['балик', 'салямі'],
-            chicken: ['куриця'],
+            chicken: ['курка'],
             cheese: ['сир моцарелла', 'сир рокфорд'],
             pineapple: ['ананаси'],
             additional: ['томатна паста', 'петрушка']
@@ -26,7 +26,9 @@ var pizza_info = [
             price: 169
         },
         is_new:true,
-        is_popular:true
+        is_popular:true,
+        is_big:true,
+        is_small:true
 
     },
     {
@@ -35,9 +37,9 @@ var pizza_info = [
         title: "BBQ",
         type: 'М’ясна піца',
         content: {
-            meat: ['мисливські ковбаски', 'ковбаски папероні', 'шинка'],
+            meat: ['мисливські ковбаски', 'ковбаски пепероні', 'шинка'],
             cheese: ['сир домашній'],
-            mushroom: ['шампінйони'],
+            mushroom: ['шампіньйони'],
             additional: ['петрушка', 'оливки']
         },
         small_size:{
@@ -50,7 +52,9 @@ var pizza_info = [
             size: 40,
             price: 199
         },
-        is_popular:true
+        is_popular:true,
+        is_big:true,
+        is_small:true
     },
     {
         id:3,
@@ -58,7 +62,7 @@ var pizza_info = [
         title: "Міксовий поло",
         type: 'М’ясна піца',
         content: {
-            meat: ['вітчина', 'куриця копчена'],
+            meat: ['шинка', 'курка копчена'],
             cheese: ['сир моцарелла'],
             pineapple: ['ананаси'],
             additional: ['кукурудза', 'петрушка', 'соус томатний']
@@ -72,7 +76,9 @@ var pizza_info = [
             weight: 780,
             size: 40,
             price: 179
-        }
+        },
+        is_big:true,
+        is_small:true
     },
     {
         id:4,
@@ -80,9 +86,9 @@ var pizza_info = [
         title: "Сициліано",
         type: 'М’ясна піца',
         content: {
-            meat: ['вітчина', 'салямі'],
+            meat: ['шинка', 'салямі'],
             cheese: ['сир моцарелла'],
-            mushroom: ['шампінйони'],
+            mushroom: ['шампіньйони'],
             additional: ['перець болгарський',  'соус томатний']
         },
         small_size:{
@@ -94,7 +100,9 @@ var pizza_info = [
             weight: 790,
             size: 40,
             price: 169
-        }
+        },
+        is_big:true,
+        is_small:true
     },
     {
         id:17,
@@ -110,7 +118,8 @@ var pizza_info = [
             weight: 370,
             size: 30,
             price: 89
-        }
+        },
+        is_small:true
     },
     {
         id:43,
@@ -120,7 +129,7 @@ var pizza_info = [
         content: {
             meat: ['ковбаски'],
             cheese: ['сир моцарелла'],
-            mushroom: ['шампінйони'],
+            mushroom: ['шампіньйони'],
             pineapple: ['ананаси'],
             additional: ['цибуля кримська', 'огірки квашені', 'соус гірчичний']
         },
@@ -133,7 +142,9 @@ var pizza_info = [
             weight: 780,
             size: 40,
             price: 180
-        }
+        },
+        is_big:true,
+        is_small:true
     },
     {
         id:90,
@@ -141,7 +152,7 @@ var pizza_info = [
         title: "Дольче Маре",
         type: 'Морська піца',
         content: {
-            ocean: ['криветки тигрові', 'мідії', 'ікра червона', 'філе червоної риби'],
+            ocean: ['креветки тигрові', 'мідії', 'ікра червона', 'філе червоної риби'],
             cheese: ['сир моцарелла'],
             additional: ['оливкова олія', 'вершки']
         },
@@ -149,7 +160,8 @@ var pizza_info = [
             weight: 845,
             size: 40,
             price: 399
-        }
+        },
+        is_big:true
     },
     {
         id:6,
@@ -170,7 +182,9 @@ var pizza_info = [
             weight: 700,
             size: 40,
             price: 299
-        }
+        },
+        is_big:true,
+        is_small:true
     }
 ];
 

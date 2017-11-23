@@ -1,6 +1,4 @@
-/**
- * Created by chaika on 09.02.16.
- */
+
 var API_URL = "http://localhost:5050";
 
 function backendGet(url, callback) {
@@ -8,10 +6,12 @@ function backendGet(url, callback) {
         url: API_URL + url,
         type: 'GET',
         success: function(data){
-            callback(null, data);
+            if(callback)
+                callback(null, data);
         },
         error: function() {
-            callback(new Error("Ajax Failed"));
+            if (callback)
+                callback(new Error("Ajax Failed"));
         }
     })
 }

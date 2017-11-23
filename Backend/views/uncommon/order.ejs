@@ -1,0 +1,71 @@
+<div class="main-pizza container-fluid">
+    <div class="row">
+        <div class="menu">
+            <div class="row" style="padding-top: 70px;">
+                <div class="order">
+                    <div class="contact-data">
+                        1. Контактні дані
+                    </div>
+                    <div class="col-md-7 order-form">
+                        <div class="form-group name-group has-success">
+                            <label class="col-sm-2 control-label">
+                                Ім'я
+                            </label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="nameInput" type="text" placeholder="Ім'я">
+                            </div>
+                            <span class="name-input-help" style="display: inline;">Введіть тільки ім'я, не використовуючи цифр</span>
+                        </div>
+
+                        <div class="form-group phone-group has-success">
+                            <label class="col-sm-2 control-label">
+                                Телефон
+                            </label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="phoneInput" type="text" placeholder="+380805553535">
+                            </div>
+                            <span class="phone-input-help" style="display: inline;">Введіть номер телефону починаючи з +380 або з 0</span>
+                        </div>
+
+                        <div class="form-group address-group has-success">
+                            <label class="col-sm-2 control-label">
+                                Адреса
+                            </label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="addressInput" type="text" placeholder="Київ, вулиця Спаська, 2">
+                            </div>
+                            <span class="address-input-help" style="display: inline">Введіть адресу</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 order-info">
+                        <div class="bs-callout bs-callout-warning">
+                            <div class="order-info-text">
+                                Інформація про замовлення
+                            </div>
+                            <div class="order-info-time">
+                                Приблизний час доставки:
+                                <p id="ord-time">10 хвилин</p>
+                            </div>
+                            <div class="order-info-address">
+                                Адреса замовлення:
+                                <p id="ord-address">вулиця Урлівська</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="height: 65px;">
+                <div class="form-group order-next-step">
+                    <button class="btn btn-warning btn-block order-next-button" style="color: white; width: 100px; height: 35px; text-align: center; float: right;">
+                        Далі <i class="glyphicon glyphicon-chevron-right icon-white"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row" style="height: 300px; width: 800px;">
+                <div id="google-maps-id" style="height: 250px; width: 750px;"></div>
+            </div>
+        </div>
+    </div>
+</div>

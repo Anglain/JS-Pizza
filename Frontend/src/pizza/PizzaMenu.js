@@ -1,10 +1,9 @@
-/**
- * Created by chaika on 02.02.16.
- */
 
 var Templates = require('../Templates');
 var PizzaCart = require('./PizzaCart');
-var Pizza_List = require('../Pizza_List');
+
+var API = require("../API");
+var Pizza_List = [];
 
 //HTML едемент куди будуть додаватися піци
 var $pizza_list = $("#pizza_list");
@@ -23,6 +22,19 @@ function showPizzaList(list) {
         var html_code = Templates.PizzaMenu_OneItem({pizza: pizza, size: pizza.size});
 
         var $node = $(html_code);
+
+        if (pizza.is_small && !pizza.is_big) {
+            $node.find(".buy-small-stats").removeClass("col-sm-6");
+            $node.find(".buy-small-stats").addClass("col-sm-12");
+        } else if (pizza.is_big && !pizza.is_small) {
+            $node.find(".buy-big-stats").removeClass("col-sm-6");
+            $node.find(".buy-big-stats").addClass("col-sm-12");
+        } else {
+            $node.find(".buy-small-stats").removeClass("col-sm-12");
+            $node.find(".buy-big-stats").removeClass("col-sm-12");
+            $node.find(".buy-small-stats").addClass("col-sm-6");
+            $node.find(".buy-big-stats").addClass("col-sm-6");
+        }
 
         $node.find(".buy-big-button").click(function(){
             PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Big);
@@ -104,7 +116,14 @@ $("#filter-vega").click(function(){
 
 function initialiseMenu() {
     //Показуємо усі піци
-    showPizzaList(Pizza_List)
+    API.getPizzaList(function (err, list) {
+        if (err) {
+            alert("Can't load pizza list from server!\n" + err.toString());
+        } else {
+            Pizza_List = list;
+            showPizzaList(Pizza_List);
+        }
+    })
 }
 
 exports.filterPizza = filterPizza;

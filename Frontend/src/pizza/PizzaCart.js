@@ -1,7 +1,9 @@
-/**
- * Created by chaika on 02.02.16.
- */
+
 var Templates = require('../Templates');
+var API = require("../API");
+
+//Зміннa для Local Storage
+var Storage = require("./Storage");
 
 //Перелік розмірів піци
 var PizzaSize = {
@@ -11,9 +13,6 @@ var PizzaSize = {
 
 //Змінна в якій зберігаються перелік піц в кошику
 var Cart = [];
-
-//Змінні для Local Storage
-var Storage = require("./Storage");
 
 //HTML едемент куди будуть додаватися піци
 var $cart = $("#cart");
@@ -48,7 +47,6 @@ function addToCart(pizza, size) {
         orderPrice += Cart[Cart.length-1].pizza[Cart[i].size].price;
     } else {
         Cart[i].quantity++;
-        Cart[i].price = Cart[i].pizza[Cart[i].size].price * Cart[i].quantity;
         orderPrice += Cart[i].pizza[Cart[i].size].price;
     }
 
@@ -71,6 +69,7 @@ function removeFromCart(cart_item) {
         }
     }
     Cart.length--;
+    orderPrice -= cart_item.price;
 
     //Після видалення оновити відображення
     updateCart();
@@ -86,8 +85,10 @@ function initialiseCart() {
         Cart = savedCart;
 
         for (var i = 0; i < Cart.length; i++) {
-            orderPrice += Cart[i].price;
+            orderPrice += Cart[i].price * Cart[i].quantity;
         }
+    } else {
+        orderPrice = 0;
     }
 
     updateCart();
@@ -114,6 +115,8 @@ function updateCart() {
 
     //Змінюємо кнопку "Замовити" та напис із сумою замовлення
     if (Cart.length === 0) {
+        orderPrice = 0;
+
         $cart.append($noOrder);
 
         $noOrder.css("display","block");
@@ -123,6 +126,7 @@ function updateCart() {
 
         $(".button-order").prop("disabled", "disabled");
     } else {
+
         $noOrder.css("display","none");
 
         $orderSumTitle.css("display","inline");
@@ -142,27 +146,38 @@ function updateCart() {
 
         var $node = $(html_code);
 
-        $node.find(".plus").click(function(){
+        var $plus = $node.find(".plus");
+        var $minus = $node.find(".minus");
+        var $remove = $node.find(".remove");
+
+        if ($(".pizza-counter").html() === undefined) {
+            $plus.hide();
+            $minus.hide();
+            $remove.hide();
+        } else {
+            $plus.show();
+            $minus.show();
+            $remove.show();
+        }
+
+        $plus.click(function(){
             //Збільшуємо кількість замовлених піц
             cart_item.quantity++;
             orderPrice += cart_item.pizza[cart_item.size].price;
 
-            cart_item.price = cart_item.pizza[cart_item.size].price * cart_item.quantity;
-
-            console.log(cart_item.price);
+            //console.log(cart_item.price);
 
             updateCart();
         });
 
-        $node.find(".minus").click(function(){
+        $minus.click(function(){
             //Зменшуємо кількість замовлених піц
             if (cart_item.quantity > 1) {
 
                 cart_item.quantity--;
                 orderPrice -= cart_item.pizza[cart_item.size].price;
 
-                cart_item.price = cart_item.pizza[cart_item.size].price * cart_item.quantity;
-                console.log(cart_item.price);
+                //console.log(cart_item.price);
 
             } else {
                 removeFromCart(cart_item);
@@ -171,13 +186,11 @@ function updateCart() {
             updateCart();
         });
 
-        $node.find(".remove").click(function(){
+        $remove.click(function(){
             removeFromCart(cart_item);
 
             updateCart();
         });
-
-        cart_item.price = cart_item.pizza[cart_item.size].price * cart_item.quantity;
 
         $cart.append($node);
     }
@@ -188,6 +201,34 @@ function updateCart() {
 
 }
 
+function createOrder (callback) {
+
+    API.createOrder({
+
+        name: "Name",
+        phone: "+388005553535",
+        order: Cart
+
+    }, function (err, result) {
+        if (err) {
+            return callback(err);
+        } else {
+            callback(null, result);
+        }
+    });
+
+}
+
+$(".button-order").click(function() {
+    createOrder(function(err, data) {
+        if (err) {
+            alert("Can't create order!\n" + err.toString());
+        } else {
+            console.log("Order success\n" + JSON.stringify(data));
+        }
+    })
+});
+
 exports.removeFromCart = removeFromCart;
 exports.addToCart = addToCart;
 
@@ -196,3 +237,5 @@ exports.initialiseCart = initialiseCart;
 
 exports.PizzaSize = PizzaSize;
 exports.Cart = Cart;
+
+exports.createOrder = createOrder;
