@@ -106,12 +106,34 @@ function getPizzaInCart() {
     return Cart;
 }
 
+var $orderButton = $(".button-order");
+
+$orderButton.click(function(){
+    if ($(".pizza-counter").html() === undefined) {
+        window.location.href = '/';
+    } else {
+        window.location.href = '/order.html';
+    }
+});
+
 function updateCart() {
     //Функція викликається при зміні вмісту кошика
     //Показати оновлений кошик на екрані та зберегти вміcт кошика в Local Storage
 
     //Очищуємо старі піци в кошику
     $cart.html("");
+
+    if ($(".pizza-counter").html() === undefined) {
+        $orderButton.html("Редагувати замовлення");
+        $orderButton.addClass("btn-default");
+        $orderButton.removeClass("btn-warning");
+        $orderButton.prop("onclick","window.location.href='/'");
+    } else {
+        $orderButton.html("Замовити");
+        $orderButton.addClass("btn-warning");
+        $orderButton.removeClass("btn-default");
+        $orderButton.prop("onclick","window.location.href='/order.html'");
+    }
 
     //Змінюємо кнопку "Замовити" та напис із сумою замовлення
     if (Cart.length === 0) {
@@ -124,7 +146,7 @@ function updateCart() {
         $orderSumTitle.css("display","none");
         $orderSumNumber.css("display","none");
 
-        $(".button-order").prop("disabled", "disabled");
+        $orderButton.prop("disabled", "disabled");
     } else {
 
         $noOrder.css("display","none");
@@ -135,7 +157,7 @@ function updateCart() {
         $orderSumNumber.html(orderPrice);
         $orderSumNumber.append(" грн.");
 
-        $(".button-order").prop("disabled", "");
+        $orderButton.prop("disabled", "");
     }
 
     $(".order-counter").html(Cart.length);
@@ -205,9 +227,11 @@ function createOrder (callback) {
 
     API.createOrder({
 
-        name: "Name",
-        phone: "+388005553535",
-        order: Cart
+        name: $("#nameInput").val(),
+        phone: $("#phoneInput").val(),
+        address: $("#addressInput").val(),
+        order: Cart,
+        price: $(".sum-number").text()
 
     }, function (err, result) {
         if (err) {
@@ -218,16 +242,6 @@ function createOrder (callback) {
     });
 
 }
-
-$(".button-order").click(function() {
-    createOrder(function(err, data) {
-        if (err) {
-            alert("Can't create order!\n" + err.toString());
-        } else {
-            console.log("Order success\n" + JSON.stringify(data));
-        }
-    })
-});
 
 exports.removeFromCart = removeFromCart;
 exports.addToCart = addToCart;

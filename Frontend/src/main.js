@@ -81,7 +81,7 @@ function geocodeAddress(address, callback) {
                 }
             });
 
-            callback(null, results[0].formatted_address);
+            callback(null, results[0]);
         } else {
             $('#ord-time').text("невідомий");
             $('#ord-address').text('невідома');
@@ -128,18 +128,16 @@ function calculateRoute(A_latlng, B_latlng, callback) {
 
 $(function(){
         //Цей код виконуватиметься коли сторінка завантажена =======================================
+    $(".name-input-help").hide();
+    $(".phone-input-help").hide();
+    $(".address-input-help").hide();
+
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
     var Pizza_List = require('./Pizza_List');
 
     PizzaCart.initialiseCart();
     PizzaMenu.initialiseMenu();
-
-        //Ініціалізуємо карту коли завантажилась сторінка ==========================================
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-    $(".name-input-help").hide();
-    $(".phone-input-help").hide();
 
     function nameCheck(field, help, value){
         if (value.match(/^[a-zA-Zа-яА-Я \-]{1,25}$/)) {
@@ -215,19 +213,23 @@ $(function(){
         geocodeAddress($addressInput.val(), function (err, coordinates) {
             if (!err) {
                 console.log("Updating address...");
+                console.log("COORDINATES: " + coordinates);
+                console.log("COORDINATES.GEOMETRY.LOCATION: " + coordinates.geometry.location);
+                console.log("COORDINATES.FORMATTED_ADDRESS: " + coordinates.formatted_address);
 
                 $("#ord-address").text($addressInput.val());
 
                 markerHome.setMap(null);
+
                 markerHome = new google.maps.Marker({
-                    position: coordinates,
+                    position: coordinates.geometry.location,
                     map: map,
                     icon: "assets/images/home-icon.png"
                 });
 
                 console.log("Calculating route...");
 
-                calculateRoute(new google.maps.LatLng(50.464379, 30.519131), coordinates, function (err, data) {
+                calculateRoute(new google.maps.LatLng(50.464379, 30.519131), coordinates.formatted_address, function (err, data) {
                     if (!err) {
                         $("#ord-time").text(data.duration);
                     } else {
@@ -246,13 +248,33 @@ $(function(){
         var addressCorrect = addressCheck($(".address-group"), $(".address-input-help"), $("#addressInput").val());
 
         if (nameCorrect && phoneNumberCorrect && addressCorrect) {
+
             PizzaCart.createOrder(function(err, data){
                 if (err) {
                     alert("Can't create order!\n" + err.toString());
                 } else {
                     console.log("Order successful.\n" + JSON.stringify(data));
+
+                    LiqPayCheckout.init({
+                        data: data.data,
+                        signature: data.signature,
+                        embedTo: "#liqpay",
+                        mode: "popup" // embed || popup
+                    }).on("liqpay.callback", function(data){
+                        console.log(data.status);
+                        console.log(data);
+                    }).on("liqpay.ready", function(data){
+                        // ready
+                    }).on("liqpay.close", function(data){
+                        // close
+                    });
                 }
             });
         }
     });
+
+    if ($("#google-maps-id").html() !== undefined) {
+        //Ініціалізуємо карту коли завантажилась сторінка ==========================================
+        google.maps.event.addDomListener(window, 'load', initialize);
+    }
 });
